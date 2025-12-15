@@ -1,5 +1,5 @@
 {
   "routes": {
-    "/**": "/dist/index.html"
+    "/**": "/index.html"
   }
 }
