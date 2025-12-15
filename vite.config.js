@@ -8,4 +8,7 @@ export default defineConfig({
     host: true, // exposes network
     port: 5173, // optional, default is 5173
   },
+  build: {
+    outDir: "build", // if you set it like this, use 'build' instead of 'dist'
+  },
 });
