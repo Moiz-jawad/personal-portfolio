@@ -3,8 +3,8 @@ import { Canvas } from "@react-three/fiber";
 import { useMediaQuery } from "react-responsive";
 
 import { Room } from "./Room";
-import HeroLights from "../HeroModels/HeroLight";
-import Particles from "../HeroModels/Particles";
+import HeroLights from "./HeroLight";
+import Particles from "./Particles";
 import { Suspense } from "react";
 
 const HeroExperience = () => {
