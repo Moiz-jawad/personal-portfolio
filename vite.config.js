@@ -4,11 +4,9 @@ import tailwindcss from "@tailwindcss/vite";
 
 export default defineConfig({
   plugins: [react(), tailwindcss()],
+  base: "/personal-portfolio/",
   server: {
-    host: true, // exposes network
-    port: 5173, // optional, default is 5173
-  },
-  build: {
-    outDir: "build", // if you set it like this, use 'build' instead of 'dist'
+    host: true, // exposes dev server to local network
+    port: 5173,
   },
 });
