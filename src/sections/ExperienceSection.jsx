@@ -13,56 +13,72 @@ const ExperienceSection = () => {
 
   useGSAP(
     () => {
-    const cards = gsap.utils.toArray(".timeline-card");
+      const cards = gsap.utils.toArray(".timeline-card");
+      const animations = [];
 
-    cards.forEach((card) => {
-      gsap.from(card, {
-        xPercent: -100,
-        opacity: 0,
-        transformOrigin: "left left",
-        duration: 0.8,
-        ease: "power2.out",
+      cards.forEach((card) => {
+        const anim = gsap.from(card, {
+          xPercent: -100,
+          opacity: 0,
+          transformOrigin: "left left",
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 80%",
+            toggleActions: "play none none none",
+            once: true,
+          },
+        });
+        animations.push(anim);
+      });
+
+      const timelineAnim = gsap.to(".timeline", {
+        transformOrigin: "bottom bottom",
+        ease: "power1.out",
         scrollTrigger: {
-          trigger: card,
-          start: "top 80%",
-          toggleActions: "play none none none",
+          trigger: ".timeline",
+          start: "top center",
+          end: "70% center",
+          scrub: 0.3,
+          onUpdate: (self) => {
+            gsap.to(".timeline", {
+              scaleY: 1 - self.progress,
+            });
+          },
         },
       });
-    });
+      animations.push(timelineAnim);
 
-    gsap.to(".timeline", {
-      transformOrigin: "bottom bottom",
-      ease: "power1.out",
-      scrollTrigger: {
-        trigger: ".timeline",
-        start: "top center",
-        end: "70% center",
-        scrub: 0.3,
-        onUpdate: (self) => {
-          gsap.to(".timeline", {
-            scaleY: 1 - self.progress,
-            overwrite: "auto",
-          });
-        },
-      },
-      scaleY: 0,
-    });
-
-    gsap.utils.toArray(".expText").forEach((text) => {
-      gsap.from(text, {
-        xPercent: 0,
-        opacity: 0,
-        duration: 0.8,
-        ease: "power2.out",
-        scrollTrigger: {
-          trigger: text,
-          start: "top 60%",
-          toggleActions: "play none none none",
-        },
+      gsap.utils.toArray(".expText").forEach((text) => {
+        const anim = gsap.from(text, {
+          xPercent: 0,
+          opacity: 0,
+          duration: 0.8,
+          ease: "power2.out",
+          scrollTrigger: {
+            trigger: text,
+            start: "top 60%",
+            toggleActions: "play none none none",
+            once: true,
+          },
+        });
+        animations.push(anim);
       });
-    });
-  },
-  { scope: sectionRef });
+
+      return () => {
+        animations.forEach((anim) => anim.kill());
+        ScrollTrigger.getAll().forEach((trigger) => {
+          if (trigger.vars?.trigger === sectionRef.current || 
+              trigger.vars?.trigger?.classList?.contains("timeline-card") ||
+              trigger.vars?.trigger?.classList?.contains("expText")) {
+            trigger.kill();
+          }
+        });
+      };
+    },
+    { scope: sectionRef }
+  );
 
   return (
     <section
@@ -79,7 +95,11 @@ const ExperienceSection = () => {
         <div className="mt-32 relative">
           <div className="relative z-50 xl:space-y-32 space-y-10 ">
             {expCards.map((card, index) => (
-              <div id={card.title} className="exp-card-wrapper" key={card.title}>
+              <div
+                id={card.title}
+                className="exp-card-wrapper"
+                key={card.title}
+              >
                 <div className="xl:w-2/6">
                   <GlowCard card={card} index={index}>
                     <div>
@@ -88,6 +108,8 @@ const ExperienceSection = () => {
                         width="54"
                         src={card.imgPath}
                         alt={card.title}
+                        loading="lazy"
+                        decoding="async"
                       />
                     </div>
                   </GlowCard>
@@ -102,7 +124,14 @@ const ExperienceSection = () => {
 
                     <div className="expText flex xl:gap-20 md:gap-10 gap-5 relative z-20">
                       <div className="timeline-logo">
-                        <img src={card.logoPath} alt="logo " />
+                        <img 
+                          src={card.logoPath} 
+                          alt={`${card.title} logo`}
+                          width={80}
+                          height={80}
+                          loading="lazy"
+                          decoding="async"
+                        />
                       </div>
                       <div>
                         <h1 className="font-semibold text-3xl">{card.title}</h1>

@@ -371,13 +371,21 @@ section {
 /* Hero Text slider ends */
 
 .gradient-line {
-  width: 2px;
+  width: 3px;
   background: linear-gradient(0deg,
-      rgba(69, 222, 196, 0) 0%,
-      #62e0ff 25%,
-      #52aeff 37.51%,
-      #fd5c79 62.83%,
-      #6d45ce 92.91%);
+      #61DAFB 0%,
+      /* React */
+      #02569B 25%,
+      /* React end */
+      #61DAFB 0%,
+      /* Node.js start */
+      #68A063 50%,
+      /* Node.js end */
+      #181b18 65%,
+      /* Flutter start */
+      #61DAFB 100%
+      /* Flutter end */
+    );
 }
 
 .gradient-edge:nth-of-type(1) {

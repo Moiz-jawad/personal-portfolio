@@ -1,7 +1,8 @@
 import { SpotLight } from "@react-three/drei";
 import * as THREE from "three";
+import { memo } from "react";
 
-const HeroLights = () => (
+const HeroLights = memo(() => (
   <>
     {/* lamp's light */}
     <spotLight
@@ -45,6 +46,8 @@ const HeroLights = () => (
     <pointLight position={[0, 1, 0]} intensity={10} color="#7209b7" />
     <pointLight position={[1, 2, -2]} intensity={10} color="#0d00a4" />
   </>
-);
+));
+
+HeroLights.displayName = "HeroLights";
 
 export default HeroLights;

@@ -1,8 +1,8 @@
 /* eslint-disable react-hooks/purity */
-import { useRef, useMemo } from "react";
+import { useRef, useMemo, memo } from "react";
 import { useFrame } from "@react-three/fiber";
 
-const Particles = ({ count = 200 }) => {
+const Particles = memo(({ count = 200 }) => {
   const mesh = useRef();
 
   const particles = useMemo(() => {
@@ -31,6 +31,7 @@ const Particles = ({ count = 200 }) => {
   }, [count, particles]);
 
   useFrame(() => {
+    if (!mesh.current) return;
     const positions = mesh.current.geometry.attributes.position.array;
     for (let i = 0; i < count; i++) {
       let y = positions[i * 3 + 1];
@@ -60,6 +61,8 @@ const Particles = ({ count = 200 }) => {
       />
     </points>
   );
-};
+});
+
+Particles.displayName = "Particles";
 
 export default Particles;

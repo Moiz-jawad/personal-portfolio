@@ -30,8 +30,11 @@ const GlowCard = ({ card, children }) => {
             key={i}
             src="/images/star.png"
             alt="star"
+            width={20}
+            height={20}
             className="size-5"
             loading="lazy"
+            decoding="async"
           />
         ))}
       </div>

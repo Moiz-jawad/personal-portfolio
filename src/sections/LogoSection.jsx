@@ -24,11 +24,11 @@ const LogoSection = () => {
 
       <div className="marquee h-52">
         <div className="marquee-box md:gap-12 gap-5">
-          {logoIconsList.map((icon) => (
-            <LogoIcon key={icon.name} icon={icon} />
+          {logoIconsList.map((icon, index) => (
+            <LogoIcon key={`${icon.name}-${index}`} icon={icon} />
           ))}
-          {logoIconsList.map((icon) => (
-            <LogoIcon key={icon.name} icon={icon} />
+          {logoIconsList.map((icon, index) => (
+            <LogoIcon key={`${icon.name}-duplicate-${index}`} icon={icon} />
           ))}
         </div>
       </div>

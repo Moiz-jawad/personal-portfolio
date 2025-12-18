@@ -11,10 +11,6 @@ const navLinks = [
     name: "Skills",
     link: "#skills",
   },
-  {
-    name: "Testimonials",
-    link: "#testimonials",
-  },
 ];
 
 const words = [
@@ -110,7 +106,7 @@ const techStackImgs = [
   },
   {
     name: "Flutter Developer",
-    imgPath: "/images/logos/p",
+    imgPath: "https://img.icons8.com/color/80/flutter.png",
   },
   {
     name: "Backend Developer",
@@ -129,14 +125,14 @@ const techStackImgs = [
 const techStackIcons = [
   {
     name: "React Developer",
-    modelPath: "/models/react_logo-transformed.glb",
+    modelPath: "/models/react_logo_circle.glb",
     scale: 1,
     rotation: [0, 0, 0],
   },
   {
     name: "Flutter Developer",
     modelPath: "/models/Flutter.glb",
-    scale: 0.8,
+    scale: 30,
     rotation: [0, 0, 0],
   },
   {
@@ -162,9 +158,9 @@ const techStackIcons = [
 const expCards = [
   {
     review:
-      "Moiz’s contributions to Docker's web applications have been outstanding. He approaches challenges with a problem-solving mindset.",
-    imgPath: "/images/exp2.png",
-    logoPath: "/images/logo2.png",
+      "Moiz’s contributions to web applications have been outstanding. He approaches challenges with a problem-solving mindset.",
+    imgPath: "https://img.icons8.com/officel/80/react.png",
+    logoPath: "https://img.icons8.com/officel/80/react.png",
     title: "Full Stack Developer",
     date: "Oct 2025 - Present",
     responsibilities: [
@@ -176,8 +172,8 @@ const expCards = [
   {
     review:
       "Moiz’s work on Appwrite’s mobile app brought a high level of quality and efficiency. He delivered solutions that enhanced our mobile experience & meet our product goals.",
-    imgPath: "/images/exp3.png",
-    logoPath: "/images/logo3.png",
+    imgPath: "https://img.icons8.com/color/80/nodejs.png",
+    logoPath: "https://img.icons8.com/color/80/nodejs.png",
     title: "Backend Developer",
     date: "Oct 2025 - Nov 2025",
     responsibilities: [
@@ -189,8 +185,8 @@ const expCards = [
   {
     review:
       "Moiz brought creativity and technical expertise to the team, significantly improving our frontend performance. His work has been invaluable in delivering faster experiences.",
-    imgPath: "/images/DEN.png",
-    logoPath: "/images/DEN.png",
+    imgPath: "https://img.icons8.com/color/80/flutter.png",
+    logoPath: "https://img.icons8.com/color/80/flutter.png",
     title: "Flutter Developer",
     date: "July 2025 - Sept 2025",
     responsibilities: [
@@ -277,8 +273,8 @@ const socialImgs = [
     imgPath: "/images/fb.png",
   },
   {
-    name: "x",
-    imgPath: "/images/x.png",
+    name: "github",
+    imgPath: "https://img.icons8.com/3d-fluency/94/github-logo.png",
   },
   {
     name: "linkedin",

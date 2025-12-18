@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useState, memo } from "react";
 import { navLinks } from "../constants";
 
-const Navbar = () => {
+const Navbar = memo(() => {
   const [scrolled, setScrolled] = useState(false);
 
   useEffect(() => {
@@ -10,7 +10,8 @@ const Navbar = () => {
       setScrolled(isScrolled);
     };
 
-    window.addEventListener("scroll", handleScroll);
+    // Use passive listener for better performance
+    window.addEventListener("scroll", handleScroll, { passive: true });
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
 
@@ -41,6 +42,8 @@ const Navbar = () => {
       </div>
     </header>
   );
-};
+});
+
+Navbar.displayName = "Navbar";
 
 export default Navbar;

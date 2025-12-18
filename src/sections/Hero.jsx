@@ -1,4 +1,4 @@
-import React, { useEffect, useRef, useState } from "react";
+import React, { useEffect, useRef, useState, memo } from "react";
 import { words } from "../constants";
 import Button from "../components/Button";
 import HeroExperience from "../components/HeroModels/HeroExperience";
@@ -6,13 +6,17 @@ import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import AnimatedCounter from "../components/AnimatedCounter";
 
-const Hero = () => {
+const Hero = memo(() => {
   const heroRef = useRef(null);
   const [isHeroInView, setIsHeroInView] = useState(true);
 
   useEffect(() => {
     const section = heroRef.current;
-    if (!section || typeof window === "undefined" || !("IntersectionObserver" in window)) {
+    if (
+      !section ||
+      typeof window === "undefined" ||
+      !("IntersectionObserver" in window)
+    ) {
       return;
     }
 
@@ -30,11 +34,15 @@ const Hero = () => {
 
   useGSAP(
     () => {
-      gsap.fromTo(
+      const animation = gsap.fromTo(
         ".hero-text h1",
         { y: 50, opacity: 0 },
         { y: 0, opacity: 1, stagger: 0.3, duration: 1, ease: "power2.inOut" }
       );
+
+      return () => {
+        animation.kill();
+      };
     },
     { dependencies: [] }
   );
@@ -42,7 +50,13 @@ const Hero = () => {
   return (
     <section id="hero" ref={heroRef} className="relative overflow-hidden">
       <div className="absolute top-0 left-0 z-10">
-        <img src="/images/bg.png" alt="background" />
+        <img 
+          src="/images/bg.png" 
+          alt="background" 
+          loading="eager"
+          decoding="async"
+          fetchPriority="high"
+        />
       </div>
       <div className="hero-layout">
         {/* left : hero content */}
@@ -60,7 +74,11 @@ const Hero = () => {
                       >
                         <img
                           src={word.imgPath}
-                          alt="person"
+                          alt={word.text}
+                          width={48}
+                          height={48}
+                          loading="lazy"
+                          decoding="async"
                           className="xl:size-12 md:size-10 size-7 md:p-2 p-1 rounded-full bg-white-50"
                         />
                         <span className="text-purple-700">{word.text}</span>
@@ -96,6 +114,8 @@ const Hero = () => {
       <AnimatedCounter />
     </section>
   );
-};
+});
+
+Hero.displayName = "Hero";
 
 export default Hero;

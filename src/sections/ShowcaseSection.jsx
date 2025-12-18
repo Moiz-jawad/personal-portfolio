@@ -1,11 +1,11 @@
-import { useRef } from "react";
-import { gsap } from "gsap";
+import { useRef, memo } from "react";
+import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
 
 gsap.registerPlugin(ScrollTrigger);
 
-const AppShowcase = () => {
+const AppShowcase = memo(() => {
   const sectionRef = useRef(null);
   const rydeRef = useRef(null);
   const libraryRef = useRef(null);
@@ -13,32 +13,41 @@ const AppShowcase = () => {
 
   useGSAP(
     () => {
-      const ctx = gsap.context(() => {
-        // Cards animation
-        const cards = [
-          rydeRef.current,
-          libraryRef.current,
-          ycDirectoryRef.current,
-        ];
+      const cards = [
+        rydeRef.current,
+        libraryRef.current,
+        ycDirectoryRef.current,
+      ].filter(Boolean);
 
-        cards.forEach((card, index) => {
-          if (!card) return;
-          gsap.from(card, {
-            y: 60,
-            opacity: 0,
-            duration: 0.8,
-            ease: "power3.out",
-            delay: 0.1 * (index + 1),
-            scrollTrigger: {
-              trigger: card,
-              start: "top 85%",
-              toggleActions: "play none none none",
-            },
-          });
+      // Set initial state once (better performance)
+      gsap.set(cards, {
+        y: 60,
+        opacity: 0,
+        willChange: "transform, opacity",
+      });
+
+      const animation = gsap.to(cards, {
+        y: 0,
+        opacity: 1,
+        duration: 0.8,
+        ease: "power3.out",
+        stagger: 0.15,
+        scrollTrigger: {
+          trigger: sectionRef.current,
+          start: "top 80%",
+          toggleActions: "play none none none",
+          once: true, // ensures animation runs only once
+        },
+      });
+
+      return () => {
+        animation.kill();
+        ScrollTrigger.getAll().forEach((trigger) => {
+          if (trigger.vars?.trigger === sectionRef.current) {
+            trigger.kill();
+          }
         });
-      }, sectionRef);
-
-      return () => ctx.revert();
+      };
     },
     { scope: sectionRef }
   );
@@ -53,6 +62,7 @@ const AppShowcase = () => {
                 src="/images/project1.png"
                 alt="Ryde app interface"
                 loading="lazy"
+                decoding="async"
               />
             </div>
             <div className="text-content">
@@ -74,6 +84,7 @@ const AppShowcase = () => {
                   src="/images/project2.png"
                   alt="Library management platform"
                   loading="lazy"
+                  decoding="async"
                 />
               </div>
               <h2>The Library Management Platform</h2>
@@ -85,6 +96,7 @@ const AppShowcase = () => {
                   src="/images/project3.png"
                   alt="YC Directory app"
                   loading="lazy"
+                  decoding="async"
                 />
               </div>
               <h2>YC Directory – A Startup Showcase App</h2>
@@ -94,6 +106,8 @@ const AppShowcase = () => {
       </div>
     </section>
   );
-};
+});
+
+AppShowcase.displayName = "AppShowcase";
 
 export default AppShowcase;

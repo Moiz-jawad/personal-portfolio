@@ -1,15 +1,18 @@
 import { OrbitControls } from "@react-three/drei";
 import { Canvas } from "@react-three/fiber";
 import { useMediaQuery } from "react-responsive";
+import { memo, useMemo } from "react";
 
 import { Room } from "./Room";
 import HeroLights from "./HeroLight";
 import Particles from "./Particles";
 import { Suspense } from "react";
 
-const HeroExperience = ({ isActive = true }) => {
+const HeroExperience = memo(({ isActive = true }) => {
   const isMobile = useMediaQuery({ query: "(max-width: 768px)" });
   const isTablet = useMediaQuery({ query: "(max-width: 1024px)" });
+
+  const particleCount = useMemo(() => (isMobile ? 40 : 80), [isMobile]);
 
   return (
     <Canvas
@@ -34,7 +37,7 @@ const HeroExperience = ({ isActive = true }) => {
 
       <Suspense fallback={null}>
         <HeroLights />
-        {isActive && <Particles count={isMobile ? 40 : 80} />}
+        {isActive && <Particles count={particleCount} />}
         <group
           scale={isMobile ? 0.7 : 1}
           position={[0, -3.5, 0]}
@@ -45,6 +48,8 @@ const HeroExperience = ({ isActive = true }) => {
       </Suspense>
     </Canvas>
   );
-};
+});
+
+HeroExperience.displayName = "HeroExperience";
 
 export default HeroExperience;
