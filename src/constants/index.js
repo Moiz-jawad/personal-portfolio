@@ -29,63 +29,77 @@ const words = [
 ];
 
 const counterItems = [
-  { value: 15, suffix: "+", label: "Years of Experience" },
-  { value: 200, suffix: "+", label: "Satisfied Clients" },
-  { value: 108, suffix: "+", label: "Completed Projects" },
-  { value: 90, suffix: "%", label: "Client Retention Rate" },
+  { value: 1, suffix: "+", label: "Years of Experience" },
+  { value: "N/A", suffix: "", label: "Satisfied Clients" },
+  { value: 18, suffix: "+", label: "Completed Projects" },
+  { value: "N/A", suffix: "", label: "Client Retention Rate" },
 ];
 
 const logoIconsList = [
   {
-    imgPath: "/images/logos/company-logo-1.png",
+    imgPath: "https://img.icons8.com/color/80/flutter.png",
   },
   {
-    imgPath: "/images/logos/company-logo-2.png",
+    imgPath: "https://img.icons8.com/color/80/nodejs.png",
   },
   {
-    imgPath: "/images/logos/company-logo-3.png",
+    imgPath: "https://img.icons8.com/officel/80/react.png",
   },
   {
-    imgPath: "/images/logos/company-logo-4.png",
+    imgPath: "https://img.icons8.com/color/96/google-firebase-console.png",
   },
   {
-    imgPath: "/images/logos/company-logo-5.png",
+    imgPath: "https://img.icons8.com/fluency/96/visual-studio-code-2019.png",
   },
   {
-    imgPath: "/images/logos/company-logo-6.png",
+    imgPath: "https://img.icons8.com/3d-fluency/94/github-logo.png",
   },
   {
-    imgPath: "/images/logos/company-logo-7.png",
+    imgPath:
+      "https://img.icons8.com/external-tal-revivo-color-tal-revivo/48/external-mongodb-a-cross-platform-document-oriented-database-program-logo-color-tal-revivo.png",
   },
   {
-    imgPath: "/images/logos/company-logo-8.png",
+    imgPath: "https://img.icons8.com/color/96/html-5--v1.png",
   },
   {
-    imgPath: "/images/logos/company-logo-9.png",
+    imgPath: "https://img.icons8.com/color/96/tailwindcss.png",
   },
   {
-    imgPath: "/images/logos/company-logo-10.png",
-  },
-  {
-    imgPath: "/images/logos/company-logo-11.png",
+    imgPath: "https://img.icons8.com/color/96/javascript--v1.png",
   },
 ];
 
 const abilities = [
   {
-    imgPath: "/images/seo.png",
-    title: "Quality Focus",
-    desc: "Delivering high-quality results while maintaining attention to every detail.",
+    imgPath: "https://img.icons8.com/nolan/64/design.png",
+    title: "Robust Architecture",
+    desc: "Designing scalable backend systems and clean frontend components with modern frameworks.",
   },
   {
-    imgPath: "/images/chat.png",
-    title: "Reliable Communication",
-    desc: "Keeping you updated at every step to ensure transparency and clarity.",
+    imgPath: "https://img.icons8.com/color/48/api.png",
+    title: "Secure APIs",
+    desc: "Implementing JWT authentication, validation, and error handling for reliable communication between client and server.",
   },
   {
-    imgPath: "/images/time.png",
-    title: "On-Time Delivery",
-    desc: "Making sure projects are completed on schedule, with quality & attention to detail.",
+    imgPath:
+      "https://img.icons8.com/pulsar-gradient/48/spaceship-launch-documentation.png",
+    title: "Efficient Deployment",
+    desc: "Delivering production-ready apps with optimized performance, CI/CD pipelines, and on-time releases.",
+  },
+  {
+    imgPath: "https://img.icons8.com/color/48/web-design.png",
+    title: "User-Centric Design",
+    desc: "Crafting responsive, accessible, and polished interfaces with React and modern UI libraries.",
+  },
+  {
+    imgPath: "https://img.icons8.com/nolan/64/database.png",
+    title: "Database Mastery",
+    desc: "Building reliable schemas, optimizing queries, and integrating SQL/NoSQL solutions for performance and scalability.",
+  },
+  {
+    imgPath: "https://img.icons8.com/fluency/48/security-configuration.png",
+    title: "Best-Practice Security",
+    desc: "Applying password hashing, rate limiting, and secure coding standards to protect applications end-to-end.",
   },
 ];
 
@@ -95,8 +109,8 @@ const techStackImgs = [
     imgPath: "/images/logos/react.png",
   },
   {
-    name: "Python Developer",
-    imgPath: "/images/logos/python.svg",
+    name: "Flutter Developer",
+    imgPath: "/images/logos/p",
   },
   {
     name: "Backend Developer",
@@ -120,8 +134,8 @@ const techStackIcons = [
     rotation: [0, 0, 0],
   },
   {
-    name: "Python Developer",
-    modelPath: "/models/python-transformed.glb",
+    name: "Flutter Developer",
+    modelPath: "/models/Flutter.glb",
     scale: 0.8,
     rotation: [0, 0, 0],
   },
@@ -148,24 +162,11 @@ const techStackIcons = [
 const expCards = [
   {
     review:
-      "Adrian brought creativity and technical expertise to the team, significantly improving our frontend performance. His work has been invaluable in delivering faster experiences.",
-    imgPath: "/images/exp1.png",
-    logoPath: "/images/logo1.png",
-    title: "Frontend Developer",
-    date: "January 2023 - Present",
-    responsibilities: [
-      "Developed and maintained user-facing features for the Hostinger website.",
-      "Collaborated closely with UI/UX designers to ensure seamless user experiences.",
-      "Optimized web applications for maximum speed and scalability.",
-    ],
-  },
-  {
-    review:
-      "Adrian’s contributions to Docker's web applications have been outstanding. He approaches challenges with a problem-solving mindset.",
+      "Moiz’s contributions to Docker's web applications have been outstanding. He approaches challenges with a problem-solving mindset.",
     imgPath: "/images/exp2.png",
     logoPath: "/images/logo2.png",
     title: "Full Stack Developer",
-    date: "June 2020 - December 2023",
+    date: "Oct 2025 - Present",
     responsibilities: [
       "Led the development of Docker's web applications, focusing on scalability.",
       "Worked with backend engineers to integrate APIs seamlessly with the frontend.",
@@ -174,15 +175,34 @@ const expCards = [
   },
   {
     review:
-      "Adrian’s work on Appwrite’s mobile app brought a high level of quality and efficiency. He delivered solutions that enhanced our mobile experience & meet our product goals.",
+      "Moiz’s work on Appwrite’s mobile app brought a high level of quality and efficiency. He delivered solutions that enhanced our mobile experience & meet our product goals.",
     imgPath: "/images/exp3.png",
     logoPath: "/images/logo3.png",
-    title: "React Native Developer",
-    date: "March 2019 - May 2020",
+    title: "Backend Developer",
+    date: "Oct 2025 - Nov 2025",
     responsibilities: [
       "Built cross-platform mobile apps using React Native, integrating with Appwrite's backend services.",
       "Improved app performance and user experience through code optimization and testing.",
       "Coordinated with the product team to implement features based on feedback.",
+    ],
+  },
+  {
+    review:
+      "Moiz brought creativity and technical expertise to the team, significantly improving our frontend performance. His work has been invaluable in delivering faster experiences.",
+    imgPath: "/images/DEN.png",
+    logoPath: "/images/DEN.png",
+    title: "Flutter Developer",
+    date: "July 2025 - Sept 2025",
+    responsibilities: [
+      `Built multiple Flutter apps (Quiz App, Task Manager, AdMob,
+      Monetization App, Authentication System, Highway Incident
+      Detection App, and Social Learning App) within weekly
+      deadlines, integrating Firebase Auth, Firestore, Supabase
+      SharedPreferences, AdMob, and MVVM architecture.`,
+
+      `Applied state management, form validation, and animated UI/UX
+      transitions to deliver polished, production-ready applications
+      with real-world monetization and scalable features.`,
     ],
   },
 ];

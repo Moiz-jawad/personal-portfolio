@@ -14,17 +14,6 @@ const AppShowcase = () => {
   useGSAP(
     () => {
       const ctx = gsap.context(() => {
-        // Fade in whole section
-        gsap.fromTo(
-          sectionRef.current,
-          { opacity: 0 },
-          {
-            opacity: 1,
-            duration: 1.2,
-            ease: "power2.inOut",
-          }
-        );
-
         // Cards animation
         const cards = [
           rydeRef.current,
@@ -34,23 +23,18 @@ const AppShowcase = () => {
 
         cards.forEach((card, index) => {
           if (!card) return;
-
-          gsap.fromTo(
-            card,
-            { y: 60, opacity: 0 },
-            {
-              y: 0,
-              opacity: 1,
-              duration: 0.9,
-              ease: "power3.inOut",
-              delay: 0.3 * (index + 1),
-              scrollTrigger: {
-                trigger: card,
-                start: "top 85%",
-                once: true,
-              },
-            }
-          );
+          gsap.from(card, {
+            y: 60,
+            opacity: 0,
+            duration: 0.8,
+            ease: "power3.out",
+            delay: 0.1 * (index + 1),
+            scrollTrigger: {
+              trigger: card,
+              start: "top 85%",
+              toggleActions: "play none none none",
+            },
+          });
         });
       }, sectionRef);
 

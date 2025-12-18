@@ -11,7 +11,7 @@ const Particles = ({ count = 200 }) => {
       temp.push({
         position: [
           (Math.random() - 0.5) * 10,
-          Math.random() * 10 + 5, // higher starting point
+          Math.random() * 10 + 5,
           (Math.random() - 0.5) * 10,
         ],
         speed: 0.005 + Math.random() * 0.001,
@@ -19,6 +19,16 @@ const Particles = ({ count = 200 }) => {
     }
     return temp;
   }, [count]);
+
+  const positions = useMemo(() => {
+    const arr = new Float32Array(count * 3);
+    particles.forEach((p, i) => {
+      arr[i * 3] = p.position[0];
+      arr[i * 3 + 1] = p.position[1];
+      arr[i * 3 + 2] = p.position[2];
+    });
+    return arr;
+  }, [count, particles]);
 
   useFrame(() => {
     const positions = mesh.current.geometry.attributes.position.array;
@@ -29,13 +39,6 @@ const Particles = ({ count = 200 }) => {
       positions[i * 3 + 1] = y;
     }
     mesh.current.geometry.attributes.position.needsUpdate = true;
-  });
-
-  const positions = new Float32Array(count * 3);
-  particles.forEach((p, i) => {
-    positions[i * 3] = p.position[0];
-    positions[i * 3 + 1] = p.position[1];
-    positions[i * 3 + 2] = p.position[2];
   });
 
   return (

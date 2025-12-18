@@ -1,3 +1,4 @@
+import { SpotLight } from "@react-three/drei";
 import * as THREE from "three";
 
 const HeroLights = () => (
@@ -5,6 +6,13 @@ const HeroLights = () => (
     {/* lamp's light */}
     <spotLight
       position={[2, 5, 6]}
+      angle={0.15}
+      penumbra={0.2}
+      intensity={100}
+      color="white"
+    />
+    <SpotLight
+      position={[-1, 5, 6]}
       angle={0.15}
       penumbra={0.2}
       intensity={100}

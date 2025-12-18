@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { words } from "../constants";
 import Button from "../components/Button";
 import HeroExperience from "../components/HeroModels/HeroExperience";
@@ -7,16 +7,40 @@ import gsap from "gsap";
 import AnimatedCounter from "../components/AnimatedCounter";
 
 const Hero = () => {
-  useGSAP(() => {
-    gsap.fromTo(
-      ".hero-text h1",
-      { y: 50, opacity: 0 },
-      { y: 0, opacity: 1, stagger: 0.3, duration: 1, ease: "power2.inOut" }
+  const heroRef = useRef(null);
+  const [isHeroInView, setIsHeroInView] = useState(true);
+
+  useEffect(() => {
+    const section = heroRef.current;
+    if (!section || typeof window === "undefined" || !("IntersectionObserver" in window)) {
+      return;
+    }
+
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        setIsHeroInView(entry.isIntersecting);
+      },
+      { threshold: 0.1 }
     );
-  });
+
+    observer.observe(section);
+
+    return () => observer.disconnect();
+  }, []);
+
+  useGSAP(
+    () => {
+      gsap.fromTo(
+        ".hero-text h1",
+        { y: 50, opacity: 0 },
+        { y: 0, opacity: 1, stagger: 0.3, duration: 1, ease: "power2.inOut" }
+      );
+    },
+    { dependencies: [] }
+  );
 
   return (
-    <section id="hero" className="relative overflow-hidden">
+    <section id="hero" ref={heroRef} className="relative overflow-hidden">
       <div className="absolute top-0 left-0 z-10">
         <img src="/images/bg.png" alt="background" />
       </div>
@@ -49,7 +73,7 @@ const Hero = () => {
               <h1>that Deliver Results</h1>
             </div>
             <b>
-              <p className="bg-gradient-to-r from-white via-indigo-500 to-purple-400 text-transparent bg-clip-text md:text-xl relative z-10 pointer-events-none">
+              <p className="bg-gradient-to-r from-white via-indigo-400 to-gray-400 text-transparent bg-clip-text md:text-xl relative z-10 pointer-events-none">
                 Hi, I’m Moiz Jawad, a Full-Stack Developer who builds real-world
                 products
               </p>
@@ -65,7 +89,7 @@ const Hero = () => {
         {/* right : 3D model */}
         <figure>
           <div className="hero-3d-layout">
-            <HeroExperience />
+            <HeroExperience isActive={isHeroInView} />
           </div>
         </figure>
       </div>

@@ -2,7 +2,6 @@ import { useRef } from "react";
 import gsap from "gsap";
 import { useGSAP } from "@gsap/react";
 import { ScrollTrigger } from "gsap/all";
-import CountUp from "react-countup";
 import { counterItems } from "../constants";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -47,7 +46,7 @@ const AnimatedCounter = () => {
             className="bg-zinc-900 rounded-lg p-10 flex flex-col justify-center"
           >
             <div className="counter-number text-white-50 text-5xl font-bold mb-2">
-              <CountUp suffix={item.value} end={item.suffix} />
+              0
             </div>
             <div className="text-white-50 text-lg">{item.label}</div>
           </div>
