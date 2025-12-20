@@ -11,12 +11,14 @@ const Footer = memo(() => {
         <div className="socials">
           {socialImgs.map((socialImg, index) => (
             <div key={index} className="icon">
-              <img 
-                src={socialImg.imgPath} 
-                alt={`${socialImg.name} social icon`}
-                loading="lazy"
-                decoding="async"
-              />
+              <a href={socialImg.link}>
+                <img
+                  src={socialImg.imgPath}
+                  alt={`${socialImg.name} social icon`}
+                  loading="lazy"
+                  decoding="async"
+                />
+              </a>
             </div>
           ))}
         </div>

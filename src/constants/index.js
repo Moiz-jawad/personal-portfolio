@@ -267,18 +267,22 @@ const socialImgs = [
   {
     name: "insta",
     imgPath: "/images/insta.png",
+    link: "https://www.instagram.com",
   },
   {
     name: "fb",
     imgPath: "/images/fb.png",
+    link: "https://www.facebook.com",
   },
   {
     name: "github",
     imgPath: "https://img.icons8.com/3d-fluency/94/github-logo.png",
+    link: "https://www.github.com",
   },
   {
     name: "linkedin",
     imgPath: "/images/linkedin.png",
+    link: "https://www.linkedin.com",
   },
 ];
 
