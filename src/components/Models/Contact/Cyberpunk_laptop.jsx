@@ -2,9 +2,7 @@ import React from "react";
 import { useGLTF } from "@react-three/drei";
 
 export function Cyberpunk(props) {
-  const { nodes, materials } = useGLTF(
-    "/models/cyberpunk_laptop_concept_design.glb"
-  );
+  const { nodes, materials } = useGLTF("/models/cyberpunk_laptop_draco.glb");
   return (
     <group {...props} dispose={null}>
       <group
@@ -179,4 +177,4 @@ export function Cyberpunk(props) {
   );
 }
 
-useGLTF.preload("/models/cyberpunk_laptop_concept_design.glb");
+useGLTF.preload("/models/cyberpunk_laptop_draco.glb");
