@@ -133,7 +133,7 @@ const ContactExperience = memo(() => {
       shadows
       camera={{ position: [0, 20, 450], fov: 30 }}
       dpr={[1, 2]}
-      style={{ width: "100%", height: "100vh" }}
+      style={{ width: "100%", height: "100%" }}
       frameloop="demand"
       gl={{ antialias: true, powerPreference: "high-performance" }}
       onCreated={({ gl }) => {
