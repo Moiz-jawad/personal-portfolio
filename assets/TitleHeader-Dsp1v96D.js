@@ -1,0 +1,1 @@
+import{r,j as e}from"./r3f-Bp7huGo4.js";const a=r.memo(({title:s,sub:t})=>e.jsxs("div",{className:"flex flex-col items-center gap-5",children:[e.jsx("div",{className:"hero-badge",children:e.jsx("p",{children:t})}),e.jsx("div",{className:"font-semibold md:text-5xl text-3xl text-center",children:s})]}));a.displayName="TitleHeader";export{a as T};
