@@ -1,3 +1,4 @@
 # Auto detect text files and perform LF normalization
 * text=auto
 *.glb filter=lfs diff=lfs merge=lfs -text
+public/models/cyberpunk_laptop_concept_design.glb filter=lfs diff=lfs merge=lfs -text

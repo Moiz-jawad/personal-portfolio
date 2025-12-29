@@ -74,7 +74,7 @@ const ExperienceSection = () => {
               trigger.vars?.trigger?.classList?.contains("expText")) {
             trigger.kill();
           }
-        });
+      });
       };
     },
     { scope: sectionRef }

@@ -2,19 +2,19 @@ import React, { memo } from "react";
 
 const Button = memo(({ className, id, text }) => {
   const handleClick = (e) => {
-    e.preventDefault();
-    const target = document.getElementById("counter");
+        e.preventDefault();
+        const target = document.getElementById("counter");
 
-    if (target && id) {
-      const offset = window.innerHeight * 0.15; // Leave a bit of space at the top
+        if (target && id) {
+          const offset = window.innerHeight * 0.15; // Leave a bit of space at the top
 
-      // Calculate how far down the page we need to scroll
-      const top =
-        target.getBoundingClientRect().top + window.pageYOffset - offset;
+          // Calculate how far down the page we need to scroll
+          const top =
+            target.getBoundingClientRect().top + window.pageYOffset - offset;
 
-      // Scroll smoothly to that position
-      window.scrollTo({ top, behavior: "smooth" });
-    }
+          // Scroll smoothly to that position
+          window.scrollTo({ top, behavior: "smooth" });
+        }
   };
 
   return (

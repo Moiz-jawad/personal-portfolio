@@ -18,22 +18,22 @@ const App = () => {
       <Hero />
       <Suspense fallback={null}>
         <ErrorBoundary>
-          <AppShowcase />
+        <AppShowcase />
         </ErrorBoundary>
         <ErrorBoundary>
-          <LogoSection />
+        <LogoSection />
         </ErrorBoundary>
         <ErrorBoundary>
-          <FeatureCards />
+        <FeatureCards />
         </ErrorBoundary>
         <ErrorBoundary>
-          <ExperienceSection />
+        <ExperienceSection />
         </ErrorBoundary>
         <ErrorBoundary>
-          <TechStack />
+        <TechStack />
         </ErrorBoundary>
         <ErrorBoundary>
-          <Contact />
+        <Contact />
         </ErrorBoundary>
       </Suspense>
       <Footer />
