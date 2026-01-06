@@ -11,7 +11,7 @@ const Footer = memo(() => {
         <div className="socials">
           {socialImgs.map((socialImg, index) => (
             <div key={index} className="icon">
-              <a href={socialImg.link}>
+              <a href={socialImg.link} target="_blank">
                 <img
                   src={socialImg.imgPath}
                   alt={`${socialImg.name} social icon`}

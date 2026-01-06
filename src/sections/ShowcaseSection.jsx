@@ -59,35 +59,32 @@ const AppShowcase = memo(() => {
           <div ref={rydeRef} className="first-project-wrapper">
             <div className="image-wrapper">
               <img
-                src="/images/project1.png"
-                alt="Ryde app interface"
+                src="/images/project-1.png"
+                alt="EpicRealme app interface"
                 loading="lazy"
                 decoding="async"
               />
             </div>
             <div className="text-content">
-              <h2>
-                On-Demand Rides Made Simple with a Powerful, User-Friendly App
-                called Ryde
-              </h2>
+              <h2>EpicRealme: The Ultimate Gamer’s Universe App</h2>
               <p className="text-white-50 md:text-xl">
-                An app built with React Native, Expo, and Tailwind CSS for a
-                fast, user-friendly experience.
+                An app built with Flutter for a fast, cross‑platform, and
+                user‑friendly experience.
               </p>
             </div>
           </div>
 
           <div className="project-list-wrapper overflow-hidden">
             <div className="project" ref={libraryRef}>
-              <div className="image-wrapper bg-[#FFEFDB]">
+              <div className="image-wrapper bg-[#FFEFDA]">
                 <img
-                  src="/images/project2.png"
+                  src="/images/project-2.png "
                   alt="Library management platform"
                   loading="lazy"
                   decoding="async"
                 />
               </div>
-              <h2>The Library Management Platform</h2>
+              <h2>PixiFusion - Merge PDFs or enhance your image quality</h2>
             </div>
 
             <div className="project" ref={ycDirectoryRef}>

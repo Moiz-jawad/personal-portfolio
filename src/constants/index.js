@@ -266,23 +266,23 @@ const testimonials = [
 const socialImgs = [
   {
     name: "insta",
-    imgPath: "/images/insta.png",
-    link: "https://www.instagram.com",
+    imgPath: "https://img.icons8.com/3d-fluency/94/instagram-logo.png",
+    link: "https://www.instagram.com/moiz__sahto",
   },
   {
     name: "fb",
-    imgPath: "/images/fb.png",
-    link: "https://www.facebook.com",
+    imgPath: "https://img.icons8.com/3d-fluency/94/facebook-logo.png",
+    link: "https://www.facebook.com/moizjawad55",
   },
   {
     name: "github",
     imgPath: "https://img.icons8.com/3d-fluency/94/github-logo.png",
-    link: "https://www.github.com",
+    link: "https://github.com/Moiz-jawad",
   },
   {
     name: "linkedin",
-    imgPath: "/images/linkedin.png",
-    link: "https://www.linkedin.com",
+    imgPath: "https://img.icons8.com/3d-fluency/94/linkedin.png",
+    link: "www.linkedin.com/in/moiz-jawad",
   },
 ];
 
