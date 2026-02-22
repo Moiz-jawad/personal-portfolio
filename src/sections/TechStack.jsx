@@ -1,10 +1,10 @@
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
-import { memo } from "react";
+import { memo, Suspense, lazy } from "react";
 
 import TitleHeader from "../components/TitleHeader";
-import TechIconCardExperience from "../components/Models/tech_logos/TechIconCardExperience";
+const TechIconCardExperience = lazy(() => import("../components/Models/tech_logos/TechIconCardExperience"));
 import { techStackIcons } from "../constants";
 
 gsap.registerPlugin(ScrollTrigger);
@@ -64,7 +64,9 @@ const TechStack = memo(() => {
               <div className="tech-card-animated-bg" />
               <div className="tech-card-content">
                 <div className="tech-icon-wrapper">
-                  <TechIconCardExperience model={techStackIcon} />
+                  <Suspense fallback={<div className="Loading text-white-50 italic text-sm">Loading model...</div>}>
+                    <TechIconCardExperience model={techStackIcon} />
+                  </Suspense>
                 </div>
 
                 <div className="padding-x w-full">

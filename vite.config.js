@@ -11,9 +11,9 @@ export default defineConfig({
     },
   },
   base: "/",
-  server: {
-    host: true,
-    port: 5173,
+  server: {},
+  optimizeDeps: {
+    include: ["three", "@react-three/fiber", "@react-three/drei", "gsap"],
   },
   build: {
     rollupOptions: {

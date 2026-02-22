@@ -2,6 +2,7 @@ import { useRef, memo } from "react";
 import gsap from "gsap";
 import { ScrollTrigger } from "gsap/ScrollTrigger";
 import { useGSAP } from "@gsap/react";
+import Tilt from "react-parallax-tilt";
 
 gsap.registerPlugin(ScrollTrigger);
 
@@ -57,46 +58,52 @@ const AppShowcase = memo(() => {
       <div className="w-full">
         <div className="showcaselayout">
           <div ref={rydeRef} className="first-project-wrapper">
-            <div className="image-wrapper">
-              <img
-                src="/images/project-1.png"
-                alt="EpicRealme app interface"
-                loading="lazy"
-                decoding="async"
-              />
-            </div>
-            <div className="text-content">
-              <h2>EpicRealme: The Ultimate Gamer’s Universe App</h2>
-              <p className="text-white-50 md:text-xl">
-                An app built with Flutter for a fast, cross‑platform, and
-                user‑friendly experience.
-              </p>
-            </div>
+            <Tilt tiltMaxAngleX={4} tiltMaxAngleY={4} perspective={1000} scale={1.01} transitionSpeed={1000} className="w-full h-full flex flex-col justify-between">
+              <div className="image-wrapper">
+                <img
+                  src="/images/project-1.png"
+                  alt="EpicRealme app interface"
+                  loading="lazy"
+                  decoding="async"
+                />
+              </div>
+              <div className="text-content">
+                <h2>EpicRealme: The Ultimate Gamer’s Universe App</h2>
+                <p className="text-white-50 md:text-xl">
+                  An app built with Flutter for a fast, cross‑platform, and
+                  user‑friendly experience.
+                </p>
+              </div>
+            </Tilt>
           </div>
 
           <div className="project-list-wrapper overflow-hidden">
             <div className="project" ref={libraryRef}>
-              <div className="image-wrapper bg-[#FFEFDA]">
-                <img
-                  src="/images/project-2.png "
-                  alt="Library management platform"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-              <h2>PixiFusion - Merge PDFs or enhance your image quality</h2>
+              <Tilt tiltMaxAngleX={8} tiltMaxAngleY={8} perspective={1000} scale={1.02} transitionSpeed={1000} className="w-full h-full">
+                <div className="image-wrapper bg-[#FFEFDA]">
+                  <img
+                    src="/images/project-2.png "
+                    alt="Library management platform"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <h2>PixiFusion - Merge PDFs or enhance your image quality</h2>
+              </Tilt>
             </div>
 
             <div className="project" ref={ycDirectoryRef}>
-              <div className="image-wrapper bg-[#FFE7EB]">
-                <img
-                  src="/images/project3.png"
-                  alt="YC Directory app"
-                  loading="lazy"
-                  decoding="async"
-                />
-              </div>
-              <h2>YC Directory – A Startup Showcase App</h2>
+              <Tilt tiltMaxAngleX={8} tiltMaxAngleY={8} perspective={1000} scale={1.02} transitionSpeed={1000} className="w-full h-full">
+                <div className="image-wrapper bg-[#FFE7EB]">
+                  <img
+                    src="/images/project3.png"
+                    alt="YC Directory app"
+                    loading="lazy"
+                    decoding="async"
+                  />
+                </div>
+                <h2>YC Directory – A Startup Showcase App</h2>
+              </Tilt>
             </div>
           </div>
         </div>

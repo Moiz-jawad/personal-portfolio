@@ -1,5 +1,6 @@
 import React, { useEffect, useState, memo } from "react";
 import { navLinks } from "../constants";
+import GooeyNav from "@/components/ui/GooeyNav";
 
 const Navbar = memo(() => {
   const [scrolled, setScrolled] = useState(false);
@@ -22,18 +23,17 @@ const Navbar = memo(() => {
           Moiz | Jawad
         </a>
         <nav className="desktop">
-          <ul>
-            {navLinks.map(({ link, name }) => (
-              <li key={name} className="group">
-                <a href={link}>
-                  <span>{name}</span>
-                  <span className="underline" />
-                </a>
-              </li>
-            ))}
-          </ul>
+          <GooeyNav
+            items={navLinks}
+            particleCount={30}
+            particleDistances={[90, 10]}
+            particleR={400}
+            initialActiveIndex={0}
+            animationTime={600}
+            timeVariance={1300}
+            colors={[1, 2, 3, 1, 2, 3, 1, 4]}
+          />
         </nav>
-
         <a href="#contact" className="contact-btn group">
           <div className="inner">
             <span>Contact me</span>

@@ -1,13 +1,13 @@
-import { useRef, useState, memo } from "react";
+import { useRef, useState, memo, Suspense, lazy } from "react";
 import emailjs from "@emailjs/browser";
+import { toast } from "sonner";
 
 import TitleHeader from "../components/TitleHeader";
-import ContactExperience from "../components/Models/Contact/ContactExperience";
+const ContactExperience = lazy(() => import("../components/Models/Contact/ContactExperience"));
 
 const Contact = memo(() => {
   const formRef = useRef(null);
   const [loading, setLoading] = useState(false);
-  const [status, setStatus] = useState({ type: null, message: "" });
   const [form, setForm] = useState({
     name: "",
     email: "",
@@ -23,7 +23,6 @@ const Contact = memo(() => {
   const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
-    setStatus({ type: null, message: "" });
 
     try {
       await emailjs.sendForm(
@@ -35,16 +34,10 @@ const Contact = memo(() => {
 
       // Reset form and show success message
       setForm({ name: "", email: "", message: "" });
-      setStatus({
-        type: "success",
-        message: "Message sent successfully! I'll get back to you soon.",
-      });
+      toast.success("Message sent successfully! I'll get back to you soon.");
     } catch (error) {
       console.error("EmailJS Error:", error);
-      setStatus({
-        type: "error",
-        message: "Failed to send message. Please try again later.",
-      });
+      toast.error("Failed to send message. Please try again later.");
     } finally {
       setLoading(false);
     }
@@ -59,7 +52,7 @@ const Contact = memo(() => {
         />
         <div className="grid-12-cols mt-16">
           <div className="xl:col-span-5">
-            <div className="flex-center card-border rounded-xl p-10">
+            <div className="flex-center card-border rounded-xl p-6 md:p-10">
               <form
                 ref={formRef}
                 onSubmit={handleSubmit}
@@ -104,18 +97,7 @@ const Contact = memo(() => {
                   />
                 </div>
 
-                {status.message && (
-                  <div
-                    className={`p-4 rounded-md ${
-                      status.type === "success"
-                        ? "bg-green-900/50 text-green-300"
-                        : "bg-red-900/50 text-red-300"
-                    }`}
-                  >
-                    {status.message}
-                  </div>
-                )}
-                <button type="submit" disabled={loading}>
+                <button type="submit" disabled={loading} className="w-full">
                   <div className="cta-button group">
                     <div className="bg-circle" />
                     <p className="text">
@@ -138,7 +120,9 @@ const Contact = memo(() => {
           </div>
           <div className="xl:col-span-7 min-h-96">
             <div className="bg-[#cd7c2e] w-full h-full hover:cursor-grab rounded-3xl overflow-hidden">
-              <ContactExperience />
+              <Suspense fallback={<div className="h-full w-full flex justify-center items-center text-white-50 italic">Loading 3D Experience...</div>}>
+                <ContactExperience />
+              </Suspense>
             </div>
           </div>
         </div>
